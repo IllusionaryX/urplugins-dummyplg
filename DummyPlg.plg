@@ -1,0 +1,94 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+        <!ENTITY name      "DummyPlg">
+        <!ENTITY author    "IllusionaryX">
+        <!ENTITY version   "2025.07.30b5">
+        <!ENTITY sha256    "67be59f8aecb8cb8c12834981dc8ed48175af0c6c3bdf348576f25f39a590b4d">
+        <!ENTITY launch    "Settings/DummyPlg.main">
+        <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+        <!ENTITY github    "IllusionaryX/urplugins-dummyplg">
+        <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/&name;.plg">
+        ]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="suitcase"
+        min="6.12" support="https://forums.unraid.net/topic/">
+
+    <CHANGES>
+        <![CDATA[
+            ➕New  🩹Fix 🔧Change
+
+            ### 2025.07.30b1
+            - ➕ Alpha Release
+        ]]>
+    </CHANGES>
+
+
+    <FILE Run="/bin/bash">
+        <INLINE>
+            OLDVERS=$(ls /boot/config/plugins/&name;/*.tgz 2>/dev/null | grep -v '&version;')
+            if [ ! -z "$OLDVERS" ]
+            then
+                echo "Cleaning old archives..."
+                rm $OLDVERS
+            else
+                echo "No cleanup of old plugin archive needed!"
+            fi
+
+            if [ -d "&plugdir;" ]
+            then
+                echo "Removing plugin files..."
+                rm -rf &plugdir;
+            else
+                echo "Plugin files were not present. Fresh install"
+            fi
+
+            echo "Creating plugin files directory..."
+            mkdir &plugdir;
+        </INLINE>
+    </FILE>
+
+    <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz">
+        <URL>https://github.com/&github;/releases/download/&version;/&name;-&version;.tgz</URL>
+        <SHA256>&sha256;</SHA256>
+    </FILE>
+
+    <FILE Run="/bin/bash">
+        <INLINE>
+            echo "Extracting plugin files..."
+            tar -C &plugdir; -xzf /boot/config/plugins/&name;/&name;-&version;.tgz 2>&amp;1
+        </INLINE>
+    </FILE>
+
+    <FILE Run="/bin/bash">
+        <INLINE>
+            echo -n "&version;" > &plugdir;/version
+        </INLINE>
+    </FILE>
+
+    <FILE Run="/bin/bash">
+        <INLINE>
+            echo ""
+            echo "----------------------------------------------------"
+            echo " &name; has been installed."
+            echo ""
+            echo ""
+            echo " 2025, IllusionaryX"
+            echo " Version: &version;"
+            echo "----------------------------------------------------"
+            echo ""
+        </INLINE>
+    </FILE>
+
+    <!--
+    The 'remove' script.
+    -->
+    <FILE Run="/bin/bash" Method="remove">
+        <INLINE>
+            echo "Uninstalling... 😭 Maybe I see you again soon. Bye!"
+            rm -rf &plugdir; 2>/dev/null
+            rm -rf /boot/config/plugins/&name;
+            update_cron # Let cron know, we removed the target files :P
+            echo "Uninstall done."
+        </INLINE>
+    </FILE>
+</PLUGIN>

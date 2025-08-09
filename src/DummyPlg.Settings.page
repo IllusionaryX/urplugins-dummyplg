@@ -1,0 +1,7 @@
+Menu="DummyPlg:1"
+Title="Settings"
+Tag="icon-suitcase"
+---
+<?php
+	phpinfo();
+?>
