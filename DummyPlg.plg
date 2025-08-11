@@ -1,21 +1,34 @@
+
+
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE PLUGIN [
-        <!ENTITY name      "DummyPlg">
-        <!ENTITY author    "IllusionaryX">
-        <!ENTITY version   "2025.07.30b5">
-        <!ENTITY sha256    "67be59f8aecb8cb8c12834981dc8ed48175af0c6c3bdf348576f25f39a590b4d">
-        <!ENTITY launch    "Settings/DummyPlg.main">
-        <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
-        <!ENTITY github    "IllusionaryX/urplugins-dummyplg">
-        <!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/&name;.plg">
+        <!ENTITY name        "DummyPlg">
+        <!ENTITY author      "IllusionaryX">
+        <!ENTITY version     "2025.08.11b1">
+        <!ENTITY sha256      "2f9b39c6ca23b3a4ad76453e1a2acd86e06b2063054fdbdcb8d54b75e7f56917">
+        <!ENTITY launch      "Settings/DummyPlg.main">
+        <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
+        <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
+        <!ENTITY githubRepo  "IllusionaryX/urplugins-dummyplg">
+        <!ENTITY releaseTag  "alpha/">
+        <!ENTITY pluginURL   "&gitBaseURL;&githubRepo;/master/&name;.plg">
         ]>
 
-<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="suitcase"
-        min="6.12" support="https://forums.unraid.net/topic/">
+<PLUGIN name="&name;" 
+        author="&author;" 
+        version="&version;" 
+        launch="&launch;" 
+        pluginURL="&pluginURL;" 
+        icon="suitcase"
+        min="6.12" 
+        support="https://forums.unraid.net/topic/">
 
     <CHANGES>
         <![CDATA[
             ➕New  🩹Fix 🔧Change
+
+            ### 2025.08.11b1
+            - ➕ Update .plg Path Structure
 
             ### 2025.07.30b1
             - ➕ Alpha Release
@@ -48,9 +61,43 @@
     </FILE>
 
     <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz">
-        <URL>https://github.com/&github;/releases/download/&version;/&name;-&version;.tgz</URL>
+        <URL>https://github.com/&githubRepo;/releases/download/&releaseTag;&name;-&version;.tgz</URL>
         <SHA256>&sha256;</SHA256>
     </FILE>
+
+    <!-- Create default.cfg -->
+    <FILE Name="&plugdir;/settings.json">
+        <INLINE>
+            <![CDATA[
+            {
+                "base_options": {
+                "debug": true
+                },
+                "sections": [
+                    {
+                      "section_name": "First Section",
+                      "section_content": [
+                        "WelcomeBldr",
+                        "StatusBldr",
+                        "LiveViewBldr"
+                      ]
+                    },
+                    {
+                      "section_name": "Second Section",
+                      "section_content": [
+                        "SelectionBldr"
+                      ]
+                    }
+                ],
+                "optimisations": {
+                "minimize_output": true
+                }
+            }
+
+            ]]>
+        </INLINE>
+    </FILE>
+
 
     <FILE Run="/bin/bash">
         <INLINE>
