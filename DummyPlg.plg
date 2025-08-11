@@ -5,12 +5,12 @@
         <!ENTITY name        "DummyPlg">
         <!ENTITY author      "IllusionaryX">
         <!ENTITY version     "2025.08.11b1">
-        <!ENTITY sha256      "2f9b39c6ca23b3a4ad76453e1a2acd86e06b2063054fdbdcb8d54b75e7f56917">
+        <!ENTITY sha256      "24ba5429bb57ed6ec5b9dc74ebbad22c0fc909cf847ef8385e093fb3fe18e6ef">
         <!ENTITY launch      "Settings/DummyPlg.main">
         <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
         <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
         <!ENTITY githubRepo  "IllusionaryX/urplugins-dummyplg">
-        <!ENTITY releaseTag  "alpha/">
+        <!ENTITY releasePath  "2025.08.11b1/">
         <!ENTITY pluginURL   "&gitBaseURL;&githubRepo;/master/&name;.plg">
         ]>
 
@@ -61,7 +61,7 @@
     </FILE>
 
     <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz">
-        <URL>https://github.com/&githubRepo;/releases/download/&releaseTag;&name;-&version;.tgz</URL>
+        <URL>https://github.com/&githubRepo;/releases/download/&releasePath;&name;-&version;.tgz</URL>
         <SHA256>&sha256;</SHA256>
     </FILE>
 
