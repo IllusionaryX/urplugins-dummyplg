@@ -1,6 +1,6 @@
 Menu="DummyPlg:2"
 Title="Settings"
-Tag="icon-suitcase"
+Tag="suitcase"
 ---
 <?php
 	phpinfo();

@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
         <!ENTITY name        "DummyPlg">
         <!ENTITY author      "IllusionaryX">
-        <!ENTITY version     "2025.08.12b1">
-        <!ENTITY sha256      "f237f2bedb9e77734d1693e7111e46955e3711c3c12da1ba4d24d3ef84f62dc2">
+        <!ENTITY version     "2025.08.12b2">
+        <!ENTITY sha256      "8b6e18fd65d850dff75e2ae547b2f3df2f31a6375b7b0fa7e508615a782025c3">
         <!ENTITY launch      "Settings/DummyPlg">
         <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
         <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
@@ -70,30 +70,30 @@
     <FILE Name="&plugdir;/settings.json">
         <INLINE>
             <![CDATA[
-            {
-                "base_options": {
-                "debug": true
-                },
-                "sections": [
-                    {
-                      "section_name": "First Section",
-                      "section_content": [
-                        "WelcomeBldr",
-                        "StatusBldr",
-                        "LiveViewBldr"
-                      ]
-                    },
-                    {
-                      "section_name": "Second Section",
-                      "section_content": [
-                        "SelectionBldr"
-                      ]
-                    }
-                ],
-                "optimisations": {
-                "minimize_output": true
-                }
-            }
+{
+    "base_options": {
+    "debug": true
+    },
+    "sections": [
+        {
+          "section_name": "First Section",
+          "section_content": [
+            "WelcomeBldr",
+            "StatusBldr",
+            "LiveViewBldr"
+          ]
+        },
+        {
+          "section_name": "Second Section",
+          "section_content": [
+            "SelectionBldr"
+          ]
+        }
+    ],
+    "optimisations": {
+    "minimize_output": true
+    }
+}
 
             ]]>
         </INLINE>
@@ -118,10 +118,10 @@
             echo ""
             echo "----------------------------------------------------"
             echo " &name; has been installed."
-            echo ""
-            echo ""
-            echo " 2025, IllusionaryX"
             echo " Version: &version;"
+            echo ""
+            echo " Year: 2025"
+            echo " Built by: &author;"
             echo "----------------------------------------------------"
             echo ""
         </INLINE>
@@ -132,10 +132,10 @@
     -->
     <FILE Run="/bin/bash" Method="remove">
         <INLINE>
-            echo "Uninstalling... 😭 Maybe I see you again soon. Bye!"
+            echo "Uninstalling... 😭 Maybe I'll see you again. Bye!"
             rm -rf &plugdir; 2>/dev/null
             rm -rf /boot/config/plugins/&name;
-            update_cron # Let cron know, we removed the target files :P
+            update_cron # Let cron know, we removed the target files..
             echo "Uninstall done."
         </INLINE>
     </FILE>
