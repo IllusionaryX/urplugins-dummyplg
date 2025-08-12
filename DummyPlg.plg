@@ -1,16 +1,14 @@
-
-
 <?xml version='1.0' standalone='yes'?>
 <!DOCTYPE PLUGIN [
         <!ENTITY name        "DummyPlg">
         <!ENTITY author      "IllusionaryX">
         <!ENTITY version     "2025.08.12b1">
-        <!ENTITY sha256      "9a87136753064eb780aec139d8e80882e518b6f329f8ba03f18aecfd1bffadc0">
+        <!ENTITY sha256      "f237f2bedb9e77734d1693e7111e46955e3711c3c12da1ba4d24d3ef84f62dc2">
         <!ENTITY launch      "Settings/DummyPlg">
         <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
         <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
         <!ENTITY githubRepo  "IllusionaryX/urplugins-dummyplg">
-        <!ENTITY releasePath  "2025.08.12b1/">
+        <!ENTITY releasePath "&version;/">
         <!ENTITY pluginURL   "&gitBaseURL;&githubRepo;/master/&name;.plg">
         ]>
 
