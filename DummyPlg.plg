@@ -4,13 +4,13 @@
 <!DOCTYPE PLUGIN [
         <!ENTITY name        "DummyPlg">
         <!ENTITY author      "IllusionaryX">
-        <!ENTITY version     "2025.08.11b1">
-        <!ENTITY sha256      "24ba5429bb57ed6ec5b9dc74ebbad22c0fc909cf847ef8385e093fb3fe18e6ef">
-        <!ENTITY launch      "Settings/DummyPlg.main">
+        <!ENTITY version     "2025.08.12b1">
+        <!ENTITY sha256      "9a87136753064eb780aec139d8e80882e518b6f329f8ba03f18aecfd1bffadc0">
+        <!ENTITY launch      "Settings/DummyPlg">
         <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
         <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
         <!ENTITY githubRepo  "IllusionaryX/urplugins-dummyplg">
-        <!ENTITY releasePath  "2025.08.11b1/">
+        <!ENTITY releasePath  "2025.08.12b1/">
         <!ENTITY pluginURL   "&gitBaseURL;&githubRepo;/master/&name;.plg">
         ]>
 
@@ -26,6 +26,9 @@
     <CHANGES>
         <![CDATA[
             ➕New  🩹Fix 🔧Change
+
+            ### 2025.08.12b1
+            - ➕ Various fixes for persisting issues preventing fully functional plugin template.
 
             ### 2025.08.11b1
             - ➕ Update .plg Path Structure
