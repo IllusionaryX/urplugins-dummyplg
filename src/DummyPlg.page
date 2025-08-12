@@ -4,3 +4,109 @@ Title="Dummy Plugin"
 Icon="suitcase"
 Tabs="true"
 ---
+
+<?
+### Base PHP Setup ###
+
+# Pull baseline data
+libxml_use_internal_errors(true); # Suppress any warnings from xml errors.
+
+$scriptName = "DummyPlg";
+$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
+$pluginRoot = "$docroot/plugins/$scriptName";
+include_once( "./plugins/$scriptName/includes/GUILayoutTest.php" );
+
+?>
+
+<style type="text/css">
+.Plugin-wrapper {
+    width: 100%;
+}
+
+.Plugin-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.Plugin-item {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    min-height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Plugin-item .header i{
+    font-size: 64px;
+}
+
+.Plugin-item .body{
+    display: flex;
+    flex-direction: row;
+}
+
+.Plugin-item .body .name{
+    margin-right: 10px;
+}
+
+.Plugin-button1 {
+    width: 150px;
+    text-align: center;
+}
+</style>
+
+<div class="Plugin-wrapper">
+    <div class="Plugin-container">
+        <?if( $settings["base_options"]["debug"] === true ) {?>
+            Debug Mode Enabled
+        <?}else{?>
+            <? foreach ( $settings["sections"][0]["section_content"] as $key => $section) { ?>
+            <div class="Plugin-item" title="This is an Item">
+                <div class="header">
+                    <div class="image">
+                        <i class="fa suitcase big white-text"></i>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="name">
+                        <? print("Name") ?>
+                    </div>
+                    <div class="data">
+                        <? print($section); ?>
+                    </div>
+                </div>
+            </div>
+            <? } ?>
+        <? } ?>
+    </div>
+    <div class="Plugin-container">
+        <div class="Plugin-button1">
+            <input type="button" id="Plugin-button1" value="Plugin Button" />
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+async function DoSomething(){
+    const response = await fetch("/plugins/<?=$scriptName?>/do_something.php", { "do" : 2 } );
+    const json = await response.json();
+    window.location.reload(true);
+    // (To)Do - Add response Error Checking...
+}
+
+document.addEventListener( 'DOMContentLoaded', () => {
+    document.querySelector("#Plugin-button1").addEventListener("click", () => {
+        
+        const confirmation = confirm("Are you sure you want to do something?");
+        
+        if ( confirmation ) {
+            DoSomething();
+        }
+        
+    });
+});
+
+</script>

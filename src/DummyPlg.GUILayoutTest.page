@@ -61,7 +61,7 @@ include_once( "./plugins/$scriptName/includes/GUILayoutTest.php" );
         <?if( $settings["base_options"]["debug"] === true ) {?>
             Debug Mode Enabled
         <?}else{?>
-            <? foreach ( $DRIVE_STATUS as $key => $val) { ?>
+            <? foreach ( $settings["sections"][0]["section_content"] as $key => $section) { ?>
             <div class="Plugin-item" title="This is an Item">
                 <div class="header">
                     <div class="image">
@@ -73,7 +73,7 @@ include_once( "./plugins/$scriptName/includes/GUILayoutTest.php" );
                         <? print("Name") ?>
                     </div>
                     <div class="data">
-                        <? print("Data"); ?>
+                        <? print($section); ?>
                     </div>
                 </div>
             </div>

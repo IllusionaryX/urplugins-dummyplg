@@ -2,8 +2,8 @@
 <!DOCTYPE PLUGIN [
         <!ENTITY name        "DummyPlg">
         <!ENTITY author      "IllusionaryX">
-        <!ENTITY version     "2025.08.12b2">
-        <!ENTITY sha256      "8b6e18fd65d850dff75e2ae547b2f3df2f31a6375b7b0fa7e508615a782025c3">
+        <!ENTITY version     "2025.08.12b3">
+        <!ENTITY sha256      "32c804e2dc64fd79fe580858f4ee0b13a99651f3fba40ad016e9f0219bdc88f4">
         <!ENTITY launch      "Settings/DummyPlg">
         <!ENTITY plugdir     "/usr/local/emhttp/plugins/&name;">
         <!ENTITY gitBaseURL  "https://raw.githubusercontent.com/">
